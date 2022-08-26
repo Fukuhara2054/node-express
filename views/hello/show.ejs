@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body class="container">
+    <header>
+        <h1 class="display-4">
+            <%= title%>
+        </h1>
+    </header>
+    <div role="main">
+        <p>
+            <%= content%>
+        </p>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <td>
+                    <%= mydata.id%>
+                </td>
+            </tr>
+            <tr>
+                <th>name</th>
+                <td>
+                    <%= mydata.name%>
+                </td>
+            </tr>
+            <tr>
+                <th>mail</th>
+                <td>
+                    <%= mydata.mail%>
+                </td>
+            </tr>
+            <tr>
+                <th>age</th>
+                <td>
+                    <%= mydata.age%>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

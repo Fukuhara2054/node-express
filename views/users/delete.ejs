@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body class="container">
+    <header>
+        <h1 class="display-4">
+            <%= title%>
+        </h1>
+    </header>
+    <div role="main">
+
+        <table class="table">
+            <tr>
+                <th>name</th>
+                <td>
+                    <%= form.name%>
+                </td>
+            </tr>
+            <tr>
+                <th>pass</th>
+                <td>
+                    <%= form.pass%>
+                </td>
+            </tr>
+            <tr>
+                <th>mail</th>
+                <td>
+                    <%= form.mail%>
+                </td>
+            </tr>
+            <tr>
+                <th>age</th>
+                <td>
+                    <%= form.age%>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+        </table>
+
+        <form action="/users/delete" method="post">
+            <input type="hidden" name="id" value="<%= form.id%>">
+            <input type="submit" value="削除" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+
+</html>

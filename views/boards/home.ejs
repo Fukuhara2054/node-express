@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+
+<body class="container">
+    <header>
+        <h1 class="display-4">
+            <%= title%>
+        </h1>
+    </header>
+    <div role="main">
+        <p class="h4">
+            <%= userName %>'s message.</p>
+        <!-- モーダルを開くボタン・リンク -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal"><%= userName%>のプロフィールを見る</button>
+
+        <button type="button" class="btn btn-primary"><a href="/chats/index/<%= userId%>/<%= page%>">個人トークへ</a></button>
+
+
+        <table class="table mt-5">
+            <% for(let i in content){%>
+                <%- include('data_item2', {val: content[i]})%>
+                    <%}%>
+        </table>
+        <ul class="pagination justify-content-center">
+            <li class="page_item">
+                <a href="/boards/home/<%= userName%>/<%= userId%>/<%= page - 1%>" class="page-link" id="dpg">&lt;&lt;;prev</a>
+            </li>
+            <li class="page_item">
+                <a href="/boards/home/<%= userName%>/<%= userId%>/<%= page + 1%>" class="page-link" id="upg">Next &gt;&gt;</a>
+            </li>
+        </ul>
+    </div>
+    <div class="text-left">
+        <a href="/boards">&lt;&lt; Top.</a>
+    </div>
+    <table class="table mt-5">
+        <% for(let i in content){%>
+            <%- include('modal', {val: content[i]})%>
+                <%}%>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>
+<!-- 自己制作機能-->
+<script>
+    const pg = "<%= page%>";
+    if (pg <= 0) {
+        $('#dpg').hide();
+    }
+    //1ページあたりの最大表示数
+    let pnum = '<%= pnum%>';
+    const maxpg = '<%= content%>';
+    const maxlength = maxpg.split(',').length;
+
+    if (maxlength < pnum) {
+        $('#upg').hide();
+    }
+</script>
